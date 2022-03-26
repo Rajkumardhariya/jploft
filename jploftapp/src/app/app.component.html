@@ -1,0 +1,80 @@
+
+<div class="container">
+    <div style="text-align: center;">
+        <h1>MyTest Componenet</h1>
+    </div>
+    <div >
+        <div >
+            <form [formGroup]="myform">
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label" for="textinput"> Name</label>
+                    <div class="col-sm-9">
+                        <input type="name" min="0" formControlName="name" name="name"
+                            placeholder="Please enter email" class="form-control" >
+                            <span *ngIf="!myform.value.name && submitted">Name is required</span>
+
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label" for="textinput"> Email</label>
+                    <div class="col-sm-9">
+                        <input type="email"  formControlName="email" name="email"
+                            placeholder="plese enter email" class="form-control">
+                            <span *ngIf="!myform.value.email && submitted">Email is required</span>
+                    </div>
+                </div><br>
+                <div class="row form-group">
+                   				<!-- Upload image -->
+					<div class="avatar-upload">
+						<div class="avatar-edit">
+							<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+              </div>
+            </div>
+          </div>
+                </div><br>
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label" for="textinput">Gender</label>
+                    <div class="col-sm-9 row no-margin">
+                        <div class="form-check">
+                            <input class="form-check-input" formControlName="gender" type="radio"
+                                name="gender" value="0">
+                            <span class="form-check-label">
+                            Male
+                            </span>
+                        </div>
+                        <div class="form-check m-left-10">
+                            <input class="form-check-input" formControlName="gender" type="radio"
+                                name="gender" value="1">
+                            <span class="form-check-label">
+                              Female
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label" for="textinput"> Image</label>
+              
+                        <angular-editor  [config]="config" name="bio" formControlName="bio" ></angular-editor>
+   
+                </div>
+                <button (click)="submitFormdata()">Save</button>
+                <button (click)="addmore()">Add more</button>
+            </form>
+        </div>
+        <div >
+            <h1>Data table</h1>
+            <table>
+                <tr *ngFor ="let data of formData;">
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <!--<td>{{data.file }}</td>-->
+            <!--<td>{{data.bio}}</td>-->
+            <td>{{data.gender}}</td>
+                </tr>
+              </table>
+        </div>
+    </div>
+</div>
